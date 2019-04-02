@@ -1,0 +1,24 @@
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th>Transaction type</th>
+        <th>Amount ($)</th>
+        <th>Account</th>
+        <th>Recipient</th>
+        <th>Transaction Number</th>
+      </tr>
+    </thead>
+    <tbody>
+    	<% @all_transactions_for_account.each do |l|  %>
+      <tr>
+        <td><%= l.transaction_type%></td>
+        <td><%= l.amount%></td>
+        <td><%= account_number(l.account_id)%></td>
+        <td><%= l.recipient_account_number == 0 ? "Self" : account_number(l.recipient_account_number)%></td>
+        <td><%= l.transaction_number%></td>
+      </tr>
+      <% end if @all_transactions_for_account.present?%>
+    </tbody>
+  </table>
+</div>

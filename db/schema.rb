@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190402064701) do
+ActiveRecord::Schema.define(version: 20190402115249) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "account_number"
@@ -22,12 +22,13 @@ ActiveRecord::Schema.define(version: 20190402064701) do
   end
 
   create_table "transactions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "type"
+    t.string "transaction_type"
     t.decimal "amount", precision: 10
     t.integer "account_id"
     t.string "transaction_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "recipient_account_number"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

@@ -3,17 +3,34 @@
 <br>
 <%= link_to "Sign Up", new_user_registration_path%>
 
+<%else %>
+	<div class="jumbotron">
+	  <div class="container">
+	    <h3 class="display-6">Welcome <%= current_user.email %></h3>
+	    Your account balance is <%= current_user ? @account.current_balance : 0%>
+	  </div>
+	  <br>
+		<div class="table-responsive">
+		  <table class="table table-striped table-sm">
+		    <thead>
+		      <tr>
+		        <th>Transaction type</th>
+		        <th>Amount ($)</th>
+		        <th>Account</th>
+		        <th>Transaction Number</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		    	<% @transactions.each do |l|  %>
+		      <tr>
+		        <td><%= l.transaction_type%></td>
+		        <td><%= l.amount%></td>
+		        <td><%= account_number(l.account_id)%></td>
+		        <td><%= l.transaction_number%></td>
+		      </tr>
+		      <% end if @transactions.present?%>
+		    </tbody>
+		  </table>
+		</div>
+	</div>
 <%end %>
-
-<%# if current_user %>
-	<%#= link_to "Account info", user_session_path%> <%#= link_to "Sign out", destroy_user_session_path(), method: :delete%>
-
-	<!-- Welcome <%#= current_user.email %> -->
-<%# end %>
-
-
-<div class="jumbotron">
-  <div class="container">
-    <h3 class="display-6">Welcome <%= current_user.email %></h3>
-  </div>
-</div>
