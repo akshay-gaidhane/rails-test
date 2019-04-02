@@ -5,8 +5,15 @@
 
 <%end %>
 
-<% if current_user %>
-	<%= link_to "Account info", user_session_path%> | <%= link_to "Sign out", destroy_user_session_path(), method: :delete%>
+<%# if current_user %>
+	<%#= link_to "Account info", user_session_path%> <%#= link_to "Sign out", destroy_user_session_path(), method: :delete%>
 
-	Welcome <%= current_user.email %>
-<% end %>
+	<!-- Welcome <%#= current_user.email %> -->
+<%# end %>
+
+
+<div class="jumbotron">
+  <div class="container">
+    <h3 class="display-6">Welcome <%= current_user.email %></h3>
+  </div>
+</div>
