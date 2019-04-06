@@ -4,7 +4,7 @@
       <tr>
         <th>Transaction type</th>
         <th>Amount ($)</th>
-        <th>Account</th>
+        <th>Sender</th>
         <th>Recipient</th>
         <th>Transaction Number</th>
       </tr>
@@ -14,7 +14,7 @@
       <tr>
         <td><%= l.transaction_type%></td>
         <td><%= l.amount%></td>
-        <td><%= account_number(l.account_id)%></td>
+        <td><%= l.recipient_account_number == 0 ? "Self" : account_number(l.account_id)%></td>
         <td><%= l.recipient_account_number == 0 ? "Self" : account_number(l.recipient_account_number)%></td>
         <td><%= l.transaction_number%></td>
       </tr>

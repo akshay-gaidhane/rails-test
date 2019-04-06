@@ -1,13 +1,13 @@
 <% unless current_user %>
-<%= link_to "Sign in", user_session_path%>
-<br>
-<%= link_to "Sign Up", new_user_registration_path%>
-
+	<%= link_to "Sign in", user_session_path%>
+  <br>
+  <%= link_to "Sign Up", new_user_registration_path%>
 <%else %>
 	<div class="jumbotron">
 	  <div class="container">
 	    <h3 class="display-6">Welcome <%= current_user.email %></h3>
-	    Your account balance is <%= current_user ? @account.current_balance : 0%>
+	    Your account balance is <%= current_user ? @account.current_balance : 0%> <br>
+	    Your account number is <%= @account.account_number %>
 	  </div>
 	  <br>
 		<div class="table-responsive">

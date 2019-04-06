@@ -21,7 +21,6 @@
 		<% end %>
     
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <% unless current_user %>
@@ -47,8 +46,7 @@
           <%end %>
         </ul>
         <% if current_user %>
-					<!-- <%#= link_to "Account info", user_session_path%> |  -->
-						<%= link_to "Sign out", destroy_user_session_path(), method: :delete, class: "navbar-link"%>
+					<%= link_to "Sign out", destroy_user_session_path(), method: :delete, class: "navbar-link"%>
 				<%end %>
       </div>
     </nav>
