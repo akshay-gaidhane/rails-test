@@ -9,13 +9,13 @@ module Accounts
 
     def execute!()
       @account = Account.find(@account_id)
-      @recipient_account = Account.find_by_account_number(@recipient_account_id) if @recipient_account_id != 0
+      @recipient_account = Account.find_by_account_number(@recipient_account_id) if @transaction_type != "transfer"
       ActiveRecord::Base.transaction do
         Transaction.create!(
           account_id: @account.id,
           amount: @amount,
           transaction_type: @transaction_type,
-          recipient_account_number: @recipient_account.id
+          recipient_account_number: @recipient_account.present? ? @recipient_account.id : @recipient_account_id
         )
         case @transaction_type
         when "withdraw"
