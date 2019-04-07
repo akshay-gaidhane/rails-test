@@ -9,7 +9,7 @@ module Accounts
 
     def execute!()
       @account = Account.find(@account_id)
-      @recipient_account = Account.find_by_account_number(@recipient_account_id) if @transaction_type != "transfer"
+      @recipient_account = Account.find_by_account_number(@recipient_account_id) if @transaction_type == "transfer"
       ActiveRecord::Base.transaction do
         Transaction.create!(
           account_id: @account.id,
